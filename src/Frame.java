@@ -20,6 +20,8 @@ public class Frame extends JFrame implements ActionListener  {
     float result;
 
     int clickCount;
+    int clickCountOpr = 0;
+    int clickCountNum = 0;
 
     int frameWidth = 400;
     int frameHeight = 400;
@@ -189,6 +191,7 @@ public class Frame extends JFrame implements ActionListener  {
     }
     
     void numberTextSaving(String stringValue){
+        clickCountNum++;
         
         if (numString == null) {
             numString = stringValue;
@@ -294,43 +297,47 @@ public class Frame extends JFrame implements ActionListener  {
         }
         
         if (e.getSource() == buttonDot) {
-            textShowing(".");
+            if (clickCountNum != 0) {
+                textShowing(".");
+            }
         }
         
         if (e.getSource() == buttonPlus) {
-            textShowing(" + ");
-            numStrToIntOne();
-            calcOperation = "+";
+                textShowing(" + ");
+                numStrToIntOne();
+                calcOperation = "+";
         }
         
         if (e.getSource() == buttonMinus) {
-            textShowing(" - ");
-            numStrToIntOne();
-            calcOperation = "-";
+                textShowing(" - ");
+                numStrToIntOne();
+                calcOperation = "-";
         }
 
         if (e.getSource() == buttonTimes) {
-            textShowing(" * ");
-            numStrToIntOne();
-            calcOperation = "*";
+                textShowing(" * ");
+                numStrToIntOne();
+                calcOperation = "*";
         }
 
         if (e.getSource() == buttonSlash) {
-            textShowing(" / ");
-            numStrToIntOne();
-            calcOperation = "/";
+                textShowing(" / ");
+                numStrToIntOne();
+                calcOperation = "/";
         }
 
         if (e.getSource() == buttonEquals) {
-            numStrToIntTwo();
-            calcLogic();
-            System.out.println(result);
-            firstNumber = result;
-            result = 0;
-            clickCount = 1;
-            fullStr = String.valueOf(firstNumber);
-            mainText.setText(fullStr);
-            isCont = true;
+            if (firstNumber != 0.0f && numString != "") {
+                numStrToIntTwo();
+                calcLogic();
+                System.out.println(result);
+                firstNumber = result;
+                result = 0;
+                clickCount = 1;
+                fullStr = String.valueOf(firstNumber);
+                mainText.setText(fullStr);
+                isCont = true;
+            }
         }
 
     }
