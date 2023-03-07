@@ -14,6 +14,8 @@ public class Frame extends JFrame implements ActionListener  {
     String calcOperation;
 
     boolean isCont = false;
+    boolean eqNum = false;
+    boolean secondNum = false;
 
     float firstNumber;
     float secondNumber;
@@ -166,6 +168,8 @@ public class Frame extends JFrame implements ActionListener  {
     }
 
     void textShowing(String stringValue){
+        System.out.println(clickCountOpr);
+        System.out.println(secondNum);
         if (fullStr == null) {
             fullStr = stringValue;
             mainText.setText(fullStr);
@@ -192,6 +196,12 @@ public class Frame extends JFrame implements ActionListener  {
     
     void numberTextSaving(String stringValue){
         clickCountNum++;
+        if (secondNum == false) {
+            clickCountOpr = 1;
+        }
+        else if(secondNum == true){
+            clickCountOpr = 0;
+        }
         
         if (numString == null) {
             numString = stringValue;
@@ -202,10 +212,12 @@ public class Frame extends JFrame implements ActionListener  {
     }
 
     void numStrToIntOne(){
+        clickCountOpr = 0;
         if (isCont == false) {
             firstNumber = Integer.parseInt(numString);
             System.out.println(firstNumber);
             numString = "";
+            secondNum = true;
         }
     }
 
@@ -237,63 +249,83 @@ public class Frame extends JFrame implements ActionListener  {
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() == button0) {
-            textShowing("0");
-            numberTextSaving("0");
-            numberSaving(0);
+            if (eqNum == false) {
+                textShowing("0");
+                numberTextSaving("0");
+                numberSaving(0);
+            }
         }
         
         if (e.getSource() == button1) {
-            textShowing("1");
-            numberTextSaving("1");
-            numberSaving(1);
+            if (eqNum == false) {
+                textShowing("1");
+                numberTextSaving("1");
+                numberSaving(1);
+            }
         }
         
         if (e.getSource() == button2) {
-            textShowing("2");
-            numberTextSaving("2");
-            numberSaving(2);
+            if (eqNum == false) {
+                textShowing("2");
+                numberTextSaving("2");
+                numberSaving(2);
+            }
         }
 
         if (e.getSource() == button3) {
-            textShowing("3");
-            numberTextSaving("3");
-            numberSaving(3);
+            if (eqNum == false) {
+                textShowing("3");
+                numberTextSaving("3");
+                numberSaving(3);
+            }
         }
 
         if (e.getSource() == button4) {
-            textShowing("4");
-            numberTextSaving("4");
-            numberSaving(4);
+            if (eqNum == false) {
+                textShowing("4");
+                numberTextSaving("4");
+                numberSaving(4);
+            }
         }
         
         if (e.getSource() == button5) {
-            textShowing("5");
-            numberTextSaving("5");
-            numberSaving(5);
+            if (eqNum == false) {
+                textShowing("5");
+                numberTextSaving("5");
+                numberSaving(5);
+            }
         }
 
         if (e.getSource() == button6) {
-            textShowing("6");
-            numberTextSaving("6");
-            numberSaving(6);
+            if (eqNum == false) {
+                textShowing("6");
+                numberTextSaving("6");
+                numberSaving(6);
+            }
         }
 
         if (e.getSource() == button7) {
-            textShowing("7");
-            numberTextSaving("7");
-            numberSaving(7);
+            if (eqNum == false) {
+                textShowing("7");
+                numberTextSaving("7");
+                numberSaving(7);
+            }
         }
 
         if (e.getSource() == button8) {
-            textShowing("8");
-            numberTextSaving("8");
-            numberSaving(8);
+            if (eqNum == false) {
+                textShowing("8");
+                numberTextSaving("8");
+                numberSaving(8);
+            }
         }
         
         if (e.getSource() == button9) {
-            textShowing("9");
-            numberTextSaving("9");
-            numberSaving(9);
+            if (eqNum == false) {
+                textShowing("9");
+                numberTextSaving("9");
+                numberSaving(9);
+            }
         }
         
         if (e.getSource() == buttonDot) {
@@ -303,27 +335,43 @@ public class Frame extends JFrame implements ActionListener  {
         }
         
         if (e.getSource() == buttonPlus) {
+            if (clickCountOpr != 0) {
                 textShowing(" + ");
                 numStrToIntOne();
+                secondNum = true;
                 calcOperation = "+";
+                eqNum = false;
+            }
         }
         
         if (e.getSource() == buttonMinus) {
+            if (clickCountOpr != 0) {
                 textShowing(" - ");
                 numStrToIntOne();
+                secondNum = true;
                 calcOperation = "-";
+                eqNum = false;
+            }
         }
 
         if (e.getSource() == buttonTimes) {
+            if (clickCountOpr != 0) {
                 textShowing(" * ");
                 numStrToIntOne();
+                secondNum = true;
                 calcOperation = "*";
+                eqNum = false;
+            }
         }
 
         if (e.getSource() == buttonSlash) {
+            if (clickCountOpr != 0) {
                 textShowing(" / ");
                 numStrToIntOne();
+                secondNum = true;
                 calcOperation = "/";
+                eqNum = false;
+            }
         }
 
         if (e.getSource() == buttonEquals) {
@@ -337,6 +385,14 @@ public class Frame extends JFrame implements ActionListener  {
                 fullStr = String.valueOf(firstNumber);
                 mainText.setText(fullStr);
                 isCont = true;
+                secondNum = false;
+                eqNum = true;
+                System.out.println(clickCountOpr);
+                System.out.println(secondNum);
+            }
+
+            if (secondNum == false) {
+                clickCountOpr = 1;
             }
         }
 
