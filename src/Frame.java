@@ -16,6 +16,7 @@ public class Frame extends JFrame implements ActionListener  {
     boolean isCont = false;
     boolean eqNum = false;
     boolean secondNum = false;
+    boolean dotUsed = false;
 
     float firstNumber;
     float secondNumber;
@@ -24,6 +25,7 @@ public class Frame extends JFrame implements ActionListener  {
     int clickCount;
     int clickCountOpr = 0;
     int clickCountNum = 0;
+    int clickCountDot = 0;
 
     int frameWidth = 400;
     int frameHeight = 400;
@@ -202,6 +204,10 @@ public class Frame extends JFrame implements ActionListener  {
         else if(secondNum == true){
             clickCountOpr = 0;
         }
+
+        if (secondNum == false && dotUsed == false || secondNum == true && dotUsed == false) {
+            clickCountDot = 1;
+        }
         
         if (numString == null) {
             numString = stringValue;
@@ -213,8 +219,10 @@ public class Frame extends JFrame implements ActionListener  {
 
     void numStrToIntOne(){
         clickCountOpr = 0;
+        clickCountDot = 0;
+        dotUsed = false;
         if (isCont == false) {
-            firstNumber = Integer.parseInt(numString);
+            firstNumber = Float.parseFloat(numString);
             System.out.println(firstNumber);
             numString = "";
             secondNum = true;
@@ -222,7 +230,7 @@ public class Frame extends JFrame implements ActionListener  {
     }
 
     void numStrToIntTwo(){
-        secondNumber = Integer.parseInt(numString);
+        secondNumber = Float.parseFloat(numString);
         System.out.println(secondNumber);
         numString = "";
     }
@@ -329,8 +337,11 @@ public class Frame extends JFrame implements ActionListener  {
         }
         
         if (e.getSource() == buttonDot) {
-            if (clickCountNum != 0) {
+            if (clickCountDot != 0) {
                 textShowing(".");
+                numberTextSaving(".");
+                clickCountDot = 0;
+                dotUsed = true;
             }
         }
         
