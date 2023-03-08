@@ -389,11 +389,13 @@ public class Frame extends JFrame implements ActionListener  {
                 eqNum = true;
                 System.out.println(clickCountOpr);
                 System.out.println(secondNum);
+                
+                if (secondNum == false) {
+                    clickCountOpr = 1;
+                }
+                
             }
 
-            if (secondNum == false) {
-                clickCountOpr = 1;
-            }
         }
 
     }
