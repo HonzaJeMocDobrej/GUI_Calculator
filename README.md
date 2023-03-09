@@ -2,6 +2,6 @@
 
 [Download here](https://github.com/HonzaJeMocDobrej/HonzaJeMocDobrej/GUI_Calculator/Calc.exe "download")
 
-Download and run
+<p>Download and run</p>
 
-please contact me if any unexpected bugs appear
+<p font-size: 6px, color: gray>please contact me if any unexpected bugs appear</p>
