@@ -1,6 +1,6 @@
 ## Calculator
 
-[Download here](https://github.com/HonzaJeMocDobrej/HonzaJeMocDobrej/GUI_Calculator/Calc.exe "download")
+[Download here](https://github.com/HonzaJeMocDobrej/GUI_Calculator/blob/master/Calc.exe "download")
 
 <h3>Download and run</h3>
 
